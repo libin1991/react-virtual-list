@@ -1,7 +1,10 @@
 {
   "presets": [
-    "es2015",
-    "stage-0",
-    "react"
+    "env",
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-class-properties"
   ]
 }

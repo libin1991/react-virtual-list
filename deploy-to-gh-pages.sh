@@ -5,15 +5,15 @@ set -o errexit
 git config --global user.email "developerdizzle+travis@gmail.com"
 git config --global user.name "Travis CI"
 
-# build (CHANGE THIS)
-rm -rf demo/dist
-mkdir -p demo/dist
+npm run build
 
-npm run build:demo
+git add -A
+git commit -am "[travis] Automatic build"
+
+npm run docs
+
+git add -A
+git commit -am "[travis] Automatic docs"
 
 # deploy
-cd demo/dist
-git init
-git add .
-git commit -m "[travis] Deploy to Github Pages"
-git push --force "https://${GITHUB_TOKEN}@github.com/developerdizzle/react-virtual-list.git" master:gh-pages
+git push "https://${GITHUB_TOKEN}@github.com/developerdizzle/react-virtual-list.git"

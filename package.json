@@ -1,15 +1,18 @@
 {
   "name": "react-virtual-list",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Super simple virtualized list React higher-order component",
-  "main": "lib/VirtualList.js",
+  "main": "dist/VirtualList.js",
+  "umd:main": "dist/VirtualList.umd.js",
+  "module": "dist/VirtualList.m.js",
+  "source": "src/VirtualList.js",
   "directories": {
-    "test": "test"
+    "test": "__tests__"
   },
   "scripts": {
-    "build": "babel src --out-dir lib --copy-files --ignore tests",
-    "build:demo": "webpack --config demo/webpack.config.babel.js",
-    "stats": "webpack .\\demo\\src\\app.js --config .\\demo\\webpack.config.babel.js --profile --json > stats.json",
+    "build": "prettier --write src/**/*.js && microbundle build",
+    "docs": "parcel build ./demo/index.html --out-dir ./docs",
+    "dev": "parcel ./demo/index.html --out-dir ./docs",
     "test": "jest --verbose"
   },
   "repository": {
@@ -33,22 +36,16 @@
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.18.2",
-    "babel-jest": "^17.0.2",
-    "babel-loader": "^6.2.8",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
-    "file-loader": "^0.9.0",
-    "gulp": "^3.8.11",
-    "gulp-react": "^3.0.1",
-    "jasmine-node": "^1.14.5",
-    "jest": "^17.0.3",
+    "jest": "^22.4.3",
+    "microbundle": "^0.4.4",
+    "parcel-bundler": "^1.7.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "react-test-renderer": "^16.3.1",
-    "webpack": "^1.13.3"
+    "react-test-renderer": "^16.3.1"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
